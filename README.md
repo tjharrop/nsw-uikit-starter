@@ -1,7 +1,7 @@
-Australian Government Design System - Uikit Starter
+Nodejs starter kit for NSW.gov.au websites
 ==========================
 
-> Get started with full page templates using the Australian Government Design System.
+> Get started with full page templates using the NSW version of the Australian Government Design System by the DTA.
 
 ## Templates
 
