@@ -1,15 +1,22 @@
-// Dark theme overrides
-// $AU-colordark-foreground-text:   #ffffff;
-// $AU-colordark-foreground-action: #f9f9f9;
-// $AU-colordark-foreground-focus:  #13e241;
-// $AU-colordark-background:        #134169;
+// NSW overrides
+$AU-color-background: #F3F3F3;
+$AU-color-foreground-action: #002664;
+$AU-color-foreground-focus: #000;
+$AU-color-foreground-text: #002664;
+$AU-colordark-background: #002664;
+$AU-colordark-foreground-action: #84bddc;
+$AU-color-background-alt: #00f;
+$AU-colordark-background-alt: #00f;
 
-// Light theme overrides
-// $AU-color-foreground-action: #134169;
-// $AU-color-foreground-focus:  #0C8927;
-
+$AU-colordark-foreground-focus: #f9be00;
 //Main nav, set project specific breakpoint
 $AU-main-nav-breakpoint: sm;
+$AU-logo-width: 4.5unit;
+$AU-logo-width-sm: 4.5unit;
+
+$AU-font: Arial, sans-serif !default;
+
+
 
 // UI-Kit
 @import './_uikit.scss';
@@ -120,6 +127,3 @@ form {
 		border-color: transparent;
 	}
 }
-
-
-
