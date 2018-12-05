@@ -4,5 +4,6 @@
 
 layout: default
 breadcrumb: Another test
+name: Another test
 ---
 TESTING

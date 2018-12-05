@@ -1,6 +1,7 @@
 ---
 layout: nosidenav
 breadcrumb: TEST
+name: TEST
 ---
 <div class="au-body au-body--alt">
   <div class="container-fluid">

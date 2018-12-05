@@ -1,6 +1,7 @@
 ---
 layout: default
 breadcrumb: Basic page example
+name: Basic page example
 ---
 # Basic markdown page example (h1)
 
