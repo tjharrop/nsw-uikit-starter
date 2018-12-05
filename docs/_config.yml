@@ -24,7 +24,13 @@ github_username:  jekyll
 
 pages:
   - home
+    breadcrumb: Home
+    url: /
   - folder
+  - basic
+    breadcrumb: Basic page example
+    url: /basic/
+  - form
 
 # Build settings
 markdown: kramdown

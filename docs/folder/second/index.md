@@ -1,6 +1,6 @@
 ---
-layout: default
-sidenav: sidenav
+layout: nosidenav
+breadcrumb: TEST
 ---
 <div class="au-body au-body--alt">
   <div class="container-fluid">
