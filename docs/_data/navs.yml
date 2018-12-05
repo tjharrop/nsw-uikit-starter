@@ -4,7 +4,7 @@ sidenav:
     items:
       -
         page: 'Basic Page'
-        url: basic/
+        url: /basic/
         subfolderitems:
           -
             page: 'Child Link'
@@ -25,6 +25,10 @@ sidenav:
       -
         page: 'Form page'
         url: /form/
+        subfolderitems:
+          -
+            page: 'Child Link'
+            url: /
       -
         page: 'Page Link'
         url: /

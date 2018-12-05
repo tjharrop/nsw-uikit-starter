@@ -2,7 +2,7 @@
 $AU-color-background: #F3F3F3;
 $AU-color-foreground-action: #002664;
 $AU-color-foreground-focus: #000;
-$AU-color-foreground-text: #002664;
+$AU-color-foreground-text: #0E0F0C;
 $AU-colordark-background: #002664;
 $AU-colordark-foreground-action: #84bddc;
 $AU-color-background-alt: #00f;
@@ -126,4 +126,8 @@ form {
 	&.au-control-input__input:invalid + .au-control-input__text:after{
 		border-color: transparent;
 	}
+}
+
+.hideme {
+	display: none;
 }
