@@ -16,14 +16,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<title>Australian Government Design System (NSWified) | Home</title>
+	<title>Australian Government Design System | Basic</title>
 
 	<script type="text/javascript">
 		var $html = document.documentElement; if ($html.classList) $html.classList.remove("no-js"), $html.classList.add("js"); else { var className = "no-js"; $html.className = $html.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " "), $html.className += " js" }
 	</script>
 
-	<link rel="icon" href="assets/favicons/favicon.ico">
-	<link type="text/css" rel="stylesheet" href="css/main.css">
+	<link rel="icon" href="../assets/favicons/favicon.ico">
+	<link type="text/css" rel="stylesheet" href="../css/main.css">
 
 	<!-- These are shivs to help modern html work in older internet explorer browsers -->
 	<!--[if lt IE 9]>
@@ -57,8 +57,8 @@
 					<a class="au-header__brand" href="#">
 						<img class="au-header__brand-image" alt="NSW Government" src="http://www.sl.nsw.gov.au/sites/all/themes/slnsw_frontend/images/nsw_white.png" width="90">
 						<div class="au-header__text">
-						<h2 class="au-header__heading">Name of product or service</h2>
-						<div class="au-header__subline">Simple explaination of the product or service</div>
+						<h2 class="au-header__heading">{{ site.title }}</h2>
+						<div class="au-header__subline">{{ site.description }}</div>
 						</div>
 					</a>
 				</div>
@@ -67,7 +67,7 @@
 	</header>
 
 	<!-- MAIN NAVIGATION -->
-	<nav class="au-main-nav au-main-nav--dark" id="#mainmenu" aria-label="main navigation">
+	<nav class="au-main-nav au-main-nav--dark" id="mainmenu" aria-label="main navigation">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
@@ -88,11 +88,11 @@
 									Close
 								</button>
 								<ul class="au-link-list">
-									<li class="active"><a href="#">Home</a></li>
-									<li><a href="basic">Basic page</a></li>
-									<li><a href="form">Form page</a></li>
-									<li><a href="#">Simple terms</a></li>
-									<li><a href="#">Distinct from eachother</a></li>
+                  {% if site.data.navs.mainnav[0] %}
+                    {% for item in site.data.navs.mainnav[0].items %}
+  									         <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.page }}</a></li>
+                    {% endfor %}
+                  {% endif %}
 								</ul>
 								<div class="au-main-nav__focus-trap-bottom"></div>
 							</div>
@@ -105,101 +105,116 @@
 	</nav>
 
 	<!-- MAIN BODY -->
-	<main id="content">
+	<main>
 		<!--CONTENT-->
-		<div class="au-body au-body--alt">
+    <section class="au-body">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-sm-push-6">
-						<img class="au-responsive-media-img banner__image" src="http://placekitten.com/g/600/200" alt="">
-					</div>
-					<div class="col-xs-12 col-sm-6 col-sm-pull-6">
-						<h2>Hero callout</h2>
-						<p>Support the callout with some short explanatory text. You don't need more than a couple of sentences.</p>
-						<p>Use buttons to give your user a clear call to action about what to do next.</p>
-						<div class="btn-cta-group">
-							<a class="au-btn" href="#">Primary call to action</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<section class="au-body">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Some highlighted content</h2>
-						<p>Explain some important information upfront, what is the product or service. What is the role of it. How does the user get started using it. Keep this text simple and informative. Vestibulum non consequat tellus.</p>
+          <div class="col-sm-4 col-sm-push-8">
+            {% if site.data.navs.sidenav[0] %}
+						<aside class="au-side-nav au-accordion" aria-label="side navigation">
+							<a
+								href="#nav-default" class="au-side-nav__toggle au-accordion__title au-accordion--closed"
+								aria-controls="nav-default"
+								aria-expanded="false"
+								aria-selected="false"
+								onclick="return AU.accordion.Toggle( this )"
+							>
+								{{ site.data.navs.sidenav[0].title }}
+							</a>
+							<div id="nav-default" class="au-side-nav__content au-accordion--closed au-accordion__body">
+								<h2 class="au-sidenav__title">
+									<a href="#">{{ site.data.navs.sidenav[0].title }}</a>
+								</h2>
+								<ul class="au-link-list">
+                  {% for item in site.data.navs.sidenav[0].items %}
+									<li><a href="{{ item.url }}">{{ item.page }}</a>
+                    {% if item.subfolderitems[0] %}
+                    <ul class="au-link-list">
+                      {% for entry in item.subfolderitems %}
+                      <li><a href="{{ entry.url }}">{{ entry.page }}</a>
+                        {% if entry.subsubfolderitems[0] %}
+                        <ul class="au-link-list">
+                          {% for subentry in entry.subsubfolderitems %}
+                          <li><a href="{{ subentry.url }}">{{ subentry.page }}</a></li>
+                          {% endfor %}
+												</ul>
+                        {% endif %}
+											</li>
+                      {% endfor %}
+										</ul>
+                    {% endif %}
+									</li>
+                  {% endfor %}
+									</ul>
+							</div>
+						</aside>
+          {% endif %}
+        </div>
 
-						<p>Nullam sollicitudin orci neque, ut condimentum ipsum blandit eu. Praesent eu sagittis elit.</p>
 
-						<p>Nullam ut nibh sed nunc molestie faucibus. Integer pulvinar sapien in porta fringilla. Cras et velit fermentum, pretium lacus gravida, egestas mauris. Explain some important information upfront, what is the product or service. What is the role of it. How does the user get started using it. Keep this text simple and informative.</p>
-					</div>
+
+
+            <div class="col-sm-8 col-sm-pull-4" id="content">
+  						<nav class="au-breadcrumbs" aria-label="breadcrumb">
+  							<ul class="au-link-list au-link-list--inline">
+                  <li><a href="{{ site.baseurl }}/">{{ site.title }}</a></li>
+                  {% capture page_url_without_index_html %}{{ page.url | remove: "/index.html" }}{% endcapture %}
+                  {% assign splitted_url_parts = page_url_without_index_html | split: '/' %}
+                  {% capture forLoopMaxInt %}{{ splitted_url_parts.size | minus:1 }}{% endcapture %}
+                  {% for i in (1..forLoopMaxInt) %}
+                      {% capture current_breadcrumb_url %}{{next_prepender}}/{{ splitted_url_parts[i] }}/index.html{% endcapture %}
+                      {% capture current_breadcrumb_md_url %}{{next_prepender}}/{{ splitted_url_parts[i] }}/{% endcapture %}
+                      {% capture next_prepender %}{{next_prepender}}/{{ splitted_url_parts[i] }}{% endcapture %}
+                      {% for breadcrumb_page in site.pages %}
+                          {% if current_breadcrumb_url == breadcrumb_page.url or current_breadcrumb_md_url == breadcrumb_page.url  %}
+                          {% assign j = forLoopMaxInt | plus: 0 %}
+                              <li {% if i == j %}class="active"{% endif %}>
+                                  {% capture breadcrumb_page_page_url_without_index_html %}{{ breadcrumb_page.url | remove: "index.html" }}{% endcapture %}
+                                  <a href="{{ site.baseurl }}{{breadcrumb_page_page_url_without_index_html}}">{{breadcrumb_page.breadcrumb}}</a>
+                              </li>
+                          {% endif %}
+                      {% endfor %}
+                  {% endfor %}
+              </ul>
+            </nav>
+
+
+
+            {{ content }}
+
+          </div>
 				</div>
 			</div>
 		</section>
-		<section class="highlighted-section au-body au-body--dark au-body--alt">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-sm-4">
-							<img class="au-responsive-media-img banner__image" src="http://placekitten.com/g/100/100" alt="">
-						<h3>Small highlight</h3>
-						<p>A small explanation of the featured item this may include a link or a call to action.</p>
-					</div>
-					<div class="col-sm-4">
-						<img class="au-responsive-media-img banner__image" src="http://placekitten.com/g/100/100" alt="">
-						<h3>Small highlight</h3>
-						<p>A small explanation of the featured item this may include a link or a call to action.</p>
-					</div>
-					<div class="col-sm-4">
-						<img class="au-responsive-media-img banner__image" src="http://placekitten.com/g/100/100" alt="">
-						<h3>Small highlight</h3>
-						<p>A small explanation of the featured item this may include a link or a call to action.</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<section class="au-body">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Sub content</h2>
-						<p>Content that is important to have on the home page but not so important that it has to be visible at the top of the page. This could include contact information, more detailed explanation of the functionality of a product or service.</p>
-						<div class="btn-cta-group">
-							<a class="au-btn" href="#">Primary call to action</a>
-							<a class="au-btn au-btn--secondary" href="#">Secondary call to action</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--END CONTENT-->
-	</main>
-	<!-- END MAIN BODY -->
+</main>
+<!-- END MAIN BODY -->
 
-	<!--FOOTER -->
-	<footer class="au-footer au-footer--dark au-body au-body--dark" role="contentinfo">
-		<div class="container-fluid">
-			<div class="row">
-				<nav class="col-md-12">
-					<ul class="au-link-list au-link-list--inline">
-						<li><a href="#">Privacy</a></li>
-						<li><a href="#">Need Help?</a></li>
-						<li><a href="#">Accessibility</a></li>
-					</ul>
-				</nav>
-				<section class="col-sm-12">
-					<div class="au-footer__end">
-						<p>
-							© Commonwealth of Australia. With the exception of the Commonwealth Coat of Arms and where otherwise noted, this work is licensed under the <a href="https://github.com/govau/uikit-starter/blob/master/LICENSE" rel="external">MIT license</a>
-						</p>
-					</div>
-				</section>
-			</div>
-	</footer>
+<!--FOOTER -->
+<footer class="au-footer au-footer--dark au-body au-body--dark" role="contentinfo">
+  <div class="container-fluid">
+    <div class="row">
+      <nav class="col-md-12">
+        <ul class="au-link-list au-link-list--inline">
+          {% if site.data.navs.bottomnav[0] %}
+            {% for item in site.data.navs.bottomnav[0].items %}
+                     <li class="{% if item.url == page.url %}active{% endif %}"><a href="{{ site.baseurl }}{{ item.url }}">{{ item.page }}</a></li>
+            {% endfor %}
+          {% endif %}
+        </ul>
+      </nav>
+      <section class="col-sm-12">
+        <div class="au-footer__end">
+          <p>
+            © NSW Government. Licensed under the <a href="https://github.com/govau/uikit-starter/blob/master/LICENSE" rel="external">MIT license</a>
+          </p>
+        </div>
+      </section>
+    </div>
+</footer>
 
-	<!-- The javascript from pancake to open and close side nav on desktop -->
-	<script type="text/javascript" src="js/script.min.js"></script>
+<!-- The javascript from pancake to open and close side nav on desktop -->
+<script type="text/javascript" src="../js/script.min.js"></script>
 </body>
 
 </html>
