@@ -15,10 +15,6 @@ The particulars of your body copy will be determined by the topic of your page. 
 
 Keep each section and subsection focused — a good approach is to include one theme (topic) per section.
 
-----------------
-
-HELLO THERE
-
 ### Subsection heading (h3)
 
 Use the side navigation menu to help your users quickly skip to different sections of your page. The menu is best suited to displaying a hierarchy with one to three levels and, as we mentioned, to display the sub-navigation of a given page.
